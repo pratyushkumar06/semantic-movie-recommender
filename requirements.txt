@@ -1,0 +1,5 @@
+sentence-transformers
+transformers
+qdrant-client
+llama-index
+llama-index-embeddings-huggingface
