@@ -1,0 +1,31 @@
+use_case,query,strategy,params,precision_at_5,recall_at_5,precision_at_10,recall_at_10,mrr,ndcg_at_10,latency_ms
+semantic_discovery,movies about memory and identity,dense_only,"{""dense_top_k"": 20}",0.2,0.25,0.3,0.75,1.0,0.6422813708518127,4989.865
+semantic_discovery,movies about memory and identity,sparse_only,"{""sparse_top_k"": 20}",0.2,0.25,0.3,0.75,0.2,0.41322699210894587,10.949
+semantic_discovery,movies about memory and identity,dense_recall_sparse_rerank,"{""dense_top_k"": 30, ""rerank_depth"": 15}",0.6,0.75,0.4,1.0,1.0,0.8270433092474516,4501.439
+semantic_discovery,movies about memory and identity,sparse_prefilter_dense_rank,"{""dense_top_k"": 20, ""sparse_top_k"": 50}",0.2,0.25,0.4,1.0,1.0,0.7654325652221776,4702.654
+semantic_discovery,movies about memory and identity,sparse_recall_dense_rerank,"{""dense_top_k"": 20, ""rerank_depth"": 30, ""sparse_top_k"": 50}",0.2,0.25,0.4,1.0,1.0,0.7654325652221776,4422.02
+semantic_discovery,movies about memory and identity,hybrid_combined,"{""dense_top_k"": 40, ""fusion_alpha"": 0.5, ""fusion_beta"": 0.5, ""sparse_top_k"": 40}",0.0,0.0,0.0,0.0,0.07142857142857142,0.0,4499.953
+keyword_precision,movies starring Sigourney Weaver,dense_only,"{""dense_top_k"": 20}",0.4,0.6666666666666666,0.2,0.6666666666666666,1.0,0.7653606369886218,4623.495
+keyword_precision,movies starring Sigourney Weaver,sparse_only,"{""sparse_top_k"": 20}",0.6,1.0,0.3,1.0,1.0,1.0,10.167
+keyword_precision,movies starring Sigourney Weaver,dense_recall_sparse_rerank,"{""dense_top_k"": 30, ""rerank_depth"": 15}",0.6,1.0,0.3,1.0,1.0,1.0,4656.676
+keyword_precision,movies starring Sigourney Weaver,sparse_prefilter_dense_rank,"{""dense_top_k"": 20, ""sparse_top_k"": 50}",0.6,1.0,0.3,1.0,1.0,1.0,4278.086
+keyword_precision,movies starring Sigourney Weaver,sparse_recall_dense_rerank,"{""dense_top_k"": 20, ""rerank_depth"": 30, ""sparse_top_k"": 50}",0.6,1.0,0.3,1.0,1.0,1.0,4605.819
+keyword_precision,movies starring Sigourney Weaver,hybrid_combined,"{""dense_top_k"": 40, ""fusion_alpha"": 0.5, ""fusion_beta"": 0.5, ""sparse_top_k"": 40}",0.6,1.0,0.3,1.0,1.0,0.9060254355346824,4561.431
+multi_constraint,post-apocalyptic movies with class conflict released after 2000,dense_only,"{""dense_top_k"": 20}",0.2,0.3333333333333333,0.1,0.3333333333333333,1.0,0.46927872602275655,4427.326
+multi_constraint,post-apocalyptic movies with class conflict released after 2000,sparse_only,"{""sparse_top_k"": 20}",0.2,0.3333333333333333,0.3,1.0,0.2,0.5051284895111404,11.123
+multi_constraint,post-apocalyptic movies with class conflict released after 2000,dense_recall_sparse_rerank,"{""dense_top_k"": 30, ""rerank_depth"": 15}",0.2,0.3333333333333333,0.1,0.3333333333333333,1.0,0.46927872602275655,4664.798
+multi_constraint,post-apocalyptic movies with class conflict released after 2000,sparse_prefilter_dense_rank,"{""dense_top_k"": 20, ""sparse_top_k"": 50}",0.6,1.0,0.3,1.0,1.0,0.9674679834891693,4600.655
+multi_constraint,post-apocalyptic movies with class conflict released after 2000,sparse_recall_dense_rerank,"{""dense_top_k"": 20, ""rerank_depth"": 30, ""sparse_top_k"": 50}",0.6,1.0,0.3,1.0,1.0,0.9674679834891693,4424.336
+multi_constraint,post-apocalyptic movies with class conflict released after 2000,hybrid_combined,"{""dense_top_k"": 40, ""fusion_alpha"": 0.5, ""fusion_beta"": 0.5, ""sparse_top_k"": 40}",0.0,0.0,0.0,0.0,0.0,0.0,4380.284
+semantic_discovery,philosophical sci-fi about consciousness,dense_only,"{""dense_top_k"": 20}",0.0,0.0,0.1,0.25,0.14285714285714285,0.13012668333070057,4377.264
+semantic_discovery,philosophical sci-fi about consciousness,sparse_only,"{""sparse_top_k"": 20}",0.6,0.75,0.3,0.75,1.0,0.8318724637288826,10.342
+semantic_discovery,philosophical sci-fi about consciousness,dense_recall_sparse_rerank,"{""dense_top_k"": 30, ""rerank_depth"": 15}",0.2,0.25,0.1,0.25,1.0,0.39038004999210174,4472.287
+semantic_discovery,philosophical sci-fi about consciousness,sparse_prefilter_dense_rank,"{""dense_top_k"": 20, ""sparse_top_k"": 50}",0.6,0.75,0.3,0.75,1.0,0.8318724637288826,4345.985
+semantic_discovery,philosophical sci-fi about consciousness,sparse_recall_dense_rerank,"{""dense_top_k"": 20, ""rerank_depth"": 30, ""sparse_top_k"": 50}",0.6,0.75,0.3,0.75,1.0,0.8318724637288826,4529.523
+semantic_discovery,philosophical sci-fi about consciousness,hybrid_combined,"{""dense_top_k"": 40, ""fusion_alpha"": 0.5, ""fusion_beta"": 0.5, ""sparse_top_k"": 40}",0.6,0.75,0.3,0.75,0.5,0.6096199500078984,4626.763
+keyword_precision,Denis Villeneuve sci-fi,dense_only,"{""dense_top_k"": 20}",0.2,0.5,0.1,0.5,1.0,0.6131471927654585,4360.561
+keyword_precision,Denis Villeneuve sci-fi,sparse_only,"{""sparse_top_k"": 20}",0.4,1.0,0.2,1.0,1.0,1.0,9.263
+keyword_precision,Denis Villeneuve sci-fi,dense_recall_sparse_rerank,"{""dense_top_k"": 30, ""rerank_depth"": 15}",0.2,0.5,0.1,0.5,1.0,0.6131471927654585,4617.003
+keyword_precision,Denis Villeneuve sci-fi,sparse_prefilter_dense_rank,"{""dense_top_k"": 20, ""sparse_top_k"": 50}",0.4,1.0,0.2,1.0,1.0,0.9197207891481877,4391.618
+keyword_precision,Denis Villeneuve sci-fi,sparse_recall_dense_rerank,"{""dense_top_k"": 20, ""rerank_depth"": 30, ""sparse_top_k"": 50}",0.4,1.0,0.2,1.0,1.0,0.9197207891481877,4607.658
+keyword_precision,Denis Villeneuve sci-fi,hybrid_combined,"{""dense_top_k"": 40, ""fusion_alpha"": 0.5, ""fusion_beta"": 0.5, ""sparse_top_k"": 40}",0.4,1.0,0.2,1.0,0.5,0.6934264036172708,4723.26

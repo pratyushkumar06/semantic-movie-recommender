@@ -13,10 +13,19 @@ from __future__ import annotations
 import os
 
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams
+from qdrant_client.models import (
+    Distance,
+    PayloadSchemaType,
+    TextIndexParams,
+    TextIndexType,
+    TokenizerType,
+    Language,
+    VectorParams,
+)
 
 COLLECTION_NAME = "my_movies"
-VECTOR_NAMES = ["fixed_chunk", "sentence_chunk", "semantic_chunk"]
+DENSE_VECTOR_NAME = "dense"
+VECTOR_NAMES = [DENSE_VECTOR_NAME]
 
 _CLIENT: QdrantClient | None = None
 
@@ -52,16 +61,55 @@ def get_client() -> QdrantClient:
     return _CLIENT
 
 
+def _create_payload_indexes(client: QdrantClient, collection_name: str) -> None:
+    client.create_payload_index(
+        collection_name=collection_name,
+        field_name="year",
+        field_schema=PayloadSchemaType.INTEGER,
+    )
+    client.create_payload_index(
+        collection_name=collection_name,
+        field_name="director_norm",
+        field_schema=PayloadSchemaType.KEYWORD,
+    )
+    client.create_payload_index(
+        collection_name=collection_name,
+        field_name="cast_norm",
+        field_schema=PayloadSchemaType.KEYWORD,
+    )
+    client.create_payload_index(
+        collection_name=collection_name,
+        field_name="themes_norm",
+        field_schema=PayloadSchemaType.KEYWORD,
+    )
+    client.create_payload_index(
+        collection_name=collection_name,
+        field_name="name_norm",
+        field_schema=PayloadSchemaType.KEYWORD,
+    )
+    client.create_payload_index(
+        collection_name=collection_name,
+        field_name="sparse_text",
+        field_schema=TextIndexParams(
+            type=TextIndexType.TEXT,
+            tokenizer=TokenizerType.WORD,
+            lowercase=True,
+            stopwords=Language.ENGLISH,
+        ),
+    )
+
+
 def recreate_collection(client: QdrantClient, collection_name: str = COLLECTION_NAME, vector_size: int = 384) -> None:
-    """Create or recreate a Qdrant collection with multiple vector indices.
+    """Create or recreate a Qdrant collection for movie-level retrieval.
     
-    Initializes a collection with separate vector fields for each chunking
-    strategy, enabling multi-strategy search comparisons.
+    Initializes a collection with a single dense vector field and
+    payload indexes for filtering and BM25 text search.
     
     Args:
         client: Qdrant client instance.
         collection_name: Name of collection to create.
         vector_size: Dimensionality of embeddings (default 384 for MiniLM).
     """
-    vectors = {name: VectorParams(size=vector_size, distance=Distance.COSINE) for name in VECTOR_NAMES}
+    vectors = {DENSE_VECTOR_NAME: VectorParams(size=vector_size, distance=Distance.COSINE)}
     client.recreate_collection(collection_name=collection_name, vectors_config=vectors)
+    _create_payload_indexes(client, collection_name)
