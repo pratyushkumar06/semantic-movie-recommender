@@ -88,7 +88,7 @@ def search(
                     "score": hit.score,
                     "chunk": hit.payload.get("chunk_text"),
                     "year": hit.payload.get("year"),
-                    "author": hit.payload.get("author"),
+                    "director": hit.payload.get("director"),
                 }
             )
         return results
@@ -109,7 +109,7 @@ def search(
             "score": hit.score,
             "chunk": hit.payload.get("chunk_text"),
             "year": hit.payload.get("year"),
-            "author": hit.payload.get("author"),
+            "director": hit.payload.get("director"),
         }
         for hit in response.points
     ]
